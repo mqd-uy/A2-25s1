@@ -2,20 +2,25 @@
 #include <iostream>
 
 using namespace std;
-template <typename T> struct AVLNode {
-  T data;
-  int height;
-  AVLNode *left;
-  AVLNode *right;
-  AVLNode(T data) {
-    this->data = data;
-    this->left = nullptr;
-    this->right = nullptr;
-    this->height = 1;
-  }
+template <typename T>
+struct AVLNode
+{
+	T data;
+	int height;
+	AVLNode *left;
+	AVLNode *right;
+	AVLNode(T data)
+	{
+		this->data = data;
+		this->left = nullptr;
+		this->right = nullptr;
+		this->height = 1;
+	}
 };
 int max(int a, int b) { return a > b ? a : b; }
-template <typename T> class AVL {
+template <typename T>
+class AVL
+{
 private:
   AVLNode<T> *root;
   int getHeight(AVLNode<T> *node) {
@@ -68,7 +73,7 @@ private:
     }
     this->updateHeight(node);
 
-    int balance = getBalance(node);
+		int balance = getBalance(node);
 
     if (balance <= -2 && node->left->data > data) {
       // left left case
