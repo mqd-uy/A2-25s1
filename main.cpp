@@ -6,11 +6,16 @@
 using namespace std;
 int main() {
   AVL<int> *miArbolito = new AVL<int>();
-  miArbolito->insert(2);
-  miArbolito->insert(3);
-  miArbolito->insert(4);
-  miArbolito->insert(1);
-  miArbolito->insert(-3);
-  miArbolito->printInOrder();
+  int a;
+  int b;
+  cin >> a;
+  for (int i = 0; i < a; i++) {
+    cin >> b;
+    if (miArbolito->exist(b))
+      continue;
+    miArbolito->insert(b);
+  }
+  miArbolito->inOrder();
+
   return 0;
 }
