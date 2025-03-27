@@ -38,6 +38,23 @@ class MinHeap {
             }
         }
 
+        void hundir(int pos) {
+            int posHIzq = hIzq(pos);
+            int posHDer = hDer(pos);
+            if(posHIzq < sig) { // al menos tengo un hijo
+                int posMenorHijo = posHIzq;
+                // si tengo hijo derecho y el hijo derecho es menor que mi hijo izquierdo
+                if(posHDer < sig && comparacion(arr[posHIzq], arr[posHDer]) > 0) { 
+                    posMenorHijo = posHDer;
+                }
+
+                if (comparacion(arr[pos], arr[posMenorHijo]) > 0) {
+                    swap(pos, posMenorHijo);
+                    hundir(posMenorHijo);
+                }
+            }
+        }
+
     public:
         MinHeap(int _cap, int (*_comparacion)(T,T)) {
             arr = new T[_cap+1]();
