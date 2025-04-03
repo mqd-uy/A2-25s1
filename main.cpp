@@ -2,49 +2,30 @@
 #include <iostream>
 #include <limits>
 #include <string>
-#include "Heap.cpp"
+#include "ListAdy.cpp"
+#include "ColaFifo.cpp"
 using namespace std;
 
-class Persona {
-  public:
-    int edad;
-    string nombre;
-    int llegada;
-    Persona(int _edad, string _nombre, int _llegada) {
-      edad = _edad;
-      nombre = _nombre;
-      llegada = _llegada;
-    }
-    Persona(){}
-};
-
-int compararPersonas(Persona p, Persona p2) {
-  if(p.edad != p2.edad) {
-    return p.edad - p2.edad;
-  }else {
-    return p.llegada - p2.llegada; 
-  }
-}
-
 int main() {
-  
-  MinHeap<Persona> *miHeap = new MinHeap<Persona>(10, compararPersonas);
-  Persona p1(40, "A", 1);
-  miHeap->insertar(p1);
-  Persona p2(30, "B", 2);
-  miHeap->insertar(p2);
-  Persona p3(30, "C", 3);
-  miHeap->insertar(p3);
-  Persona p4(40, "D", 4);
-  miHeap->insertar(p4);
-  Persona p5(30, "E", 5);
-  miHeap->insertar(p5);
+  ListAdy *miGrafito = new ListAdy(5, true, true);
+  miGrafito->aniadirArista(1, 3, 2);
+  miGrafito->aniadirArista(1, 2, 3);
+  miGrafito->aniadirArista(3, 4, 8);
+  miGrafito->aniadirArista(2, 3, 1);
 
+  // BFS(1, miGrafito);
+  ordTop(miGrafito);
 
-  while(!miHeap->estaVacio()) {
-    Persona p = miHeap->tope();
-    miHeap->removerTope();
-    cout << p.nombre << " " << p.edad << endl;
-  }
+  // QueueImp<int> *cola = new QueueImp<int>();
+  // cola->enqueue(1);
+  // cola->enqueue(2);
+  // cola->enqueue(3);
+  // cola->enqueue(4);
+  // cola->enqueue(5);
+  // cola->enqueue(6);
+  // while(!cola->isEmpty()) {
+  //   cout << cola->dequeue() << endl;
+  // }
+
   return 0;
 }
