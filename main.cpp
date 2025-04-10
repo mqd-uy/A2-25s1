@@ -3,29 +3,25 @@
 #include <limits>
 #include <string>
 #include "ListAdy.cpp"
-#include "ColaFifo.cpp"
 using namespace std;
 
 int main() {
-  ListAdy *miGrafito = new ListAdy(5, true, true);
-  miGrafito->aniadirArista(1, 3, 2);
-  miGrafito->aniadirArista(1, 2, 3);
-  miGrafito->aniadirArista(3, 4, 8);
-  miGrafito->aniadirArista(2, 3, 1);
+  ListAdy *miGrafito = new ListAdy(8, true, true);
+  miGrafito->aniadirArista(1, 4, 2);
+  miGrafito->aniadirArista(1, 2, 10);
+  miGrafito->aniadirArista(1, 3, 20);
+  miGrafito->aniadirArista(2, 5, 10);
+  miGrafito->aniadirArista(2, 3, 2);
+  miGrafito->aniadirArista(3, 5, 1);
+  miGrafito->aniadirArista(4, 2, 1);
+  miGrafito->aniadirArista(5, 1, 8);
+  miGrafito->aniadirArista(1, 8, 100);
+  miGrafito->aniadirArista(8, 2, -99);
+  miGrafito->aniadirArista(6, 7, 2);
+  // miGrafito->aniadirArista(5, 2, -10);
 
-  // BFS(1, miGrafito);
-  ordTop(miGrafito);
 
-  // QueueImp<int> *cola = new QueueImp<int>();
-  // cola->enqueue(1);
-  // cola->enqueue(2);
-  // cola->enqueue(3);
-  // cola->enqueue(4);
-  // cola->enqueue(5);
-  // cola->enqueue(6);
-  // while(!cola->isEmpty()) {
-  //   cout << cola->dequeue() << endl;
-  // }
+  floyd(miGrafito);
 
   return 0;
 }
