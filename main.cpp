@@ -1,8 +1,8 @@
+#include "ListAdy.cpp"
 #include <cassert>
 #include <iostream>
 #include <limits>
 #include <string>
-#include "ListAdy.cpp"
 using namespace std;
 
 int main() {
@@ -19,7 +19,6 @@ int main() {
   miGrafito->aniadirArista(8, 2, -99);
   miGrafito->aniadirArista(6, 7, 2);
   // miGrafito->aniadirArista(5, 2, -10);
-
 
   floyd(miGrafito);
 
