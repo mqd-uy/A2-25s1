@@ -1,5 +1,6 @@
 #include "ColaFifo.cpp"
 #include "Heap.cpp"
+#include "MFSet.cpp"
 #include <climits>
 #include <iostream>
 
@@ -358,4 +359,86 @@ void floyd(ListAdy *grafo) {
       }
     }
   }
+}
+
+void prim(ListAdy *grafo) {
+  int origen = 1;
+  int V = grafo->getV();
+  bool *visitado = new bool[V + 1]();
+  int *vengo = new int[V + 1]();
+  int *costo = new int[V + 1]();
+
+  for (int i = 1; i < V + 1; i++) {
+    visitado[i] = false;
+    vengo[i] = -1;
+    costo[i] = INT_MAX;
+  }
+
+  MinHeap<VerticeCosto> *heap = new MinHeap<VerticeCosto>(V * V, comparacionVC);
+  VerticeCosto inicial(origen, 0);
+  costo[origen] = 0;
+  heap->insertar(inicial);
+
+  while (!heap->estaVacio()) {
+    VerticeCosto aProcesar = heap->tope();
+    int o = aProcesar.ver;
+    heap->removerTope();
+
+    if (visitado[o]) {
+      continue;
+    }
+    visitado[o] = true;
+
+    Nodo<Arista> *ady = grafo->adyacentesA(o);
+    while (ady != nullptr) {
+      int d = ady->dato.destino;
+      int costoArista = ady->dato.peso;
+      if (!visitado[d] && costo[d] > costoArista) {
+        costo[d] = costoArista;
+        vengo[d] = o;
+        VerticeCosto aux(d, costo[d]);
+        heap->insertar(aux);
+      }
+      ady = ady->sig;
+    }
+  }
+  int costoTotal = 0;
+  for (int i = 1; i < V + 1; i++) {
+    if (visitado[i] && vengo[i] != -1) {
+      cout << i << "<--" << costo[i] << "-->" << vengo[i] << endl;
+      costoTotal += costo[i];
+    }
+  }
+  cout << "costo total es de " << costoTotal << endl;
+}
+
+int comparacionArista(Arista a1, Arista a2) { return a1.peso - a2.peso; }
+
+void kruskal(ListAdy *grafo) {
+  int V = grafo->getV();
+  MinHeap<Arista> *heap = new MinHeap<Arista>(grafo->getA(), comparacionArista);
+  // metmos todas la Aristas del grafo en el heap
+  for (int i = 1; i <= grafo->getV(); i++) {
+    Nodo<Arista> *ady = grafo->adyacentesA(i);
+    while (ady != nullptr) {
+      if (ady->dato.origen < ady->dato.destino) {
+        heap->insertar(ady->dato);
+      }
+      ady = ady->sig;
+    }
+  }
+  MFSet *conjuntos = new MFSet(V + 1);
+  int aristasAceptadas = 0;
+  int costoArbol = 0;
+  while (!heap->estaVacio() && aristasAceptadas < V - 1) {
+    Arista a = heap->tope();
+    heap->removerTope();
+    if (conjuntos->find(a.origen) != conjuntos->find(a.destino)) {
+      cout << a.origen << "<--" << a.peso << "-->" << a.destino << endl;
+      costoArbol += a.peso;
+      aristasAceptadas++;
+      conjuntos->merge(a.origen, a.destino);
+    }
+  }
+  cout << "costo total es de " << costoArbol << endl;
 }
