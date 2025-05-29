@@ -1,0 +1,301 @@
+100
+4
+7
+O O O O C C O
+2
+3
+O C O
+4
+7
+C C C C O C O
+10
+3
+C C O
+8
+16
+O C C C O O O C O C O O O O C O
+9
+5
+O C O C O
+1
+17
+O C C C O O O C O C O C O O O C O
+3
+6
+C O C C O C
+8
+9
+C C C C O O C O C
+1
+17
+C O C C C C O O C C C O O O C O C
+3
+17
+O C C O O O C O C O O O O O O O O
+8
+8
+C O O C O C O O
+5
+9
+O C O O O C C C O
+1
+10
+C O C O C O O O O C
+5
+9
+O C O C C C C C O
+7
+4
+O O O O
+7
+13
+O O C O O C O C O O O O O
+9
+9
+O O C O C C O O O
+9
+7
+C C C C C O O
+8
+17
+C O C O C O C O C C O O C C O C C
+5
+18
+O O C C O C C O O C C C C O C O O O
+1
+19
+O C C C C C O C C C C C O C C C C C O
+10
+11
+C O O O O C O C C O O
+2
+20
+C O O O C C O C C C C C C C C C O O C O
+9
+8
+C C C O O C C C
+8
+7
+O O C O O O O
+2
+5
+O O C O O
+9
+8
+C C C C C C O C
+2
+11
+C C C C C O O C O C C
+9
+14
+C C C C O O O C C O C C O O
+4
+17
+C O C C O C O O O O C O O C C O C
+3
+3
+C C O
+3
+9
+C O C C C C C C O
+9
+4
+O O C C
+5
+8
+C C O C C C O O
+1
+4
+O O O O
+3
+7
+O C C O C O O
+7
+1
+C
+2
+1
+C
+9
+8
+C C C C C O O O
+10
+3
+C O C
+2
+8
+C O O O C O C O
+8
+5
+O O C O O
+4
+16
+O C C O O O O C C O O C O C C C
+2
+10
+C C O C C O O O O O
+1
+6
+C O O C C C
+5
+18
+C C O C C C C C C C C C C O C C O C
+2
+1
+O
+4
+18
+O C C C O C C C O C O O C O O C O O
+9
+19
+C C C C O C C O O O O O C O O O C O O
+10
+4
+O C O C
+2
+10
+C O C C O C C O O O
+4
+19
+C O O O O O C C O O O C C C C O O O O
+8
+15
+O O O O O O C C C C O O C C C
+2
+20
+C C C C C O C C C O O O C C C O O O O C
+10
+12
+O C C C C O O O C O O C
+2
+16
+O C O C O C O C C C O C O C C O
+7
+14
+O C C O O O C O C O C C C O
+7
+16
+O O O O O C O O C C O C O O C C
+1
+5
+O O O O O
+4
+5
+O O C C O
+6
+7
+O O O C O C O
+8
+17
+O O C C O C C O C C C O O C C C O
+5
+1
+O
+3
+19
+C O O C C O C O C O C C O C C C O C C
+1
+19
+O C C O O C O C C C C O O O O O O C O
+9
+2
+O O
+4
+8
+O C C O C C C C
+9
+12
+C C O C O O O C C C C O
+10
+1
+C
+10
+14
+O C C O C O O O O O C C O O
+1
+20
+C C C O O O C O O O C O C O O O C O C C
+3
+12
+O C C O C O O C O O C O
+4
+17
+C O O O C C O C O C C O O C O C C
+4
+15
+C C C C O C O O C C C C O O C
+3
+2
+C O
+9
+6
+O C O O C C
+4
+11
+O O O C O O O O C C O
+9
+9
+C O O C C O C O O
+8
+20
+O C C O O O C C C O C O C C C C C O C O
+6
+13
+C O C O O O C O C O O C O
+5
+2
+O O
+8
+15
+O C C O C C C C C O O C O O C
+2
+5
+C O O C O
+8
+20
+C O C O C C O C C O O O O O O O C C C C
+8
+5
+O C C C O
+10
+2
+C C
+10
+17
+C C C C O C O C C C O O O O C O O
+1
+10
+O O O C O C O O O O
+9
+10
+O O O C C C O O C O
+9
+18
+C O O O C O C C C O C C C O O O C O
+9
+12
+C O O O O C C O O C O O
+3
+13
+O C C O C C O C C O O O C
+4
+18
+C O O O C C O O C C C O O C O C O O
+9
+1
+C
+5
+20
+C O C C C C O O C C O C O O O C C O C O
+2
+19
+C O O O O C O O O C C C C O C O C O C
+4
+4
+O O C O
+10
+12
+O C C C C O O O C O O C
+4
+8
+C O O O O C C C
