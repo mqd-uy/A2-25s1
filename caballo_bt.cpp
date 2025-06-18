@@ -1,4 +1,4 @@
-#include "ListAdy.cpp"
+#include "ListImp.cpp"
 #include <cassert>
 #include <iostream>
 #include <limits>
@@ -47,19 +47,35 @@ void deshacerMovimiento(int fCand, int cCand, int **caminoCandidato) {
 bool esMejorSolucion(int pasosActual, int mejoresPasos) {
   return pasosActual < mejoresPasos;
 }
+bool esMejorOIgualSolucion(int pasosActual, int mejoresPasos) {
+  return pasosActual <= mejoresPasos;
+}
 bool puedoPodar(int actual, int mejor) { return actual > mejor; }
+
+int **clonarSolucion(int **origen) {
+  int **duplicado = new int *[N]();
+  for (int f = 0; f < N; f++) {
+    duplicado[f] = new int[N]();
+    for (int c = 0; c < N; c++) {
+      duplicado[f][c] = origen[f][c];
+    }
+  }
+  return duplicado;
+}
+
 void caballo_bt(int fAc, int cAc, int fDe, int cDe, int **caminoCandidato,
-                int &mejorPasos) {
+                int &mejorPasos, ListImp<int **> *&mejoresCaminos) {
   if (!puedoPodar(caminoCandidato[fAc][cAc], mejorPasos)) {
     if (esSolucion(fAc, cAc, fDe, cDe) &&
-        esMejorSolucion(caminoCandidato[fAc][cAc], mejorPasos)) {
+        esMejorOIgualSolucion(caminoCandidato[fAc][cAc], mejorPasos)) {
+      if (esMejorSolucion(caminoCandidato[fAc][cAc], mejorPasos)) {
+        mejoresCaminos->clear();
+      }
+      mejoresCaminos->insert(clonarSolucion(caminoCandidato));
       mejorPasos = caminoCandidato[fAc][cAc];
-      cout << "encontro solucion" << endl;
-      imprimirSolucion(caminoCandidato);
-      cout << endl;
     } else {
-      int dFila[8] = {-1, -2, -2, -1, 1, 2, 2, 1};
-      int dCol[8] = {-2, -1, 1, 2, 2, 1, -2, -2};
+      int dFila[8] = {2, 1, -1, -2, -2, -1, 2, 1};
+      int dCol[8] = {1, 2, -2, -1, 1, 2, -2, -2};
       int pasoActual = caminoCandidato[fAc][cAc];
       for (int mov = 0; mov < 8; mov++) {
         int fCand = fAc + dFila[mov];
@@ -67,7 +83,8 @@ void caballo_bt(int fAc, int cAc, int fDe, int cDe, int **caminoCandidato,
 
         if (puedoAplicarMovimiento(fCand, cCand, caminoCandidato)) {
           aplicarMovimiento(fCand, cCand, pasoActual + 1, caminoCandidato);
-          caballo_bt(fCand, cCand, fDe, cDe, caminoCandidato, mejorPasos);
+          caballo_bt(fCand, cCand, fDe, cDe, caminoCandidato, mejorPasos,
+                     mejoresCaminos);
           deshacerMovimiento(fCand, cCand, caminoCandidato);
         }
       }
@@ -77,6 +94,7 @@ void caballo_bt(int fAc, int cAc, int fDe, int cDe, int **caminoCandidato,
 
 void caballo(int fAc, int cAc, int fDe, int cDe) {
   int **candidata = new int *[N]();
+  ListImp<int **> *mejoresSoluciones = new ListImp<int **>();
   for (int f = 0; f < N; f++) {
     candidata[f] = new int[N]();
     for (int c = 0; c < N; c++) {
@@ -85,7 +103,15 @@ void caballo(int fAc, int cAc, int fDe, int cDe) {
   }
   candidata[fAc][cAc] = 1;
   int mejoresPasos = INT_MAX;
-  caballo_bt(fAc, cAc, fDe, cDe, candidata, mejoresPasos);
+  caballo_bt(fAc, cAc, fDe, cDe, candidata, mejoresPasos, mejoresSoluciones);
+  for (int i = 0; i < mejoresSoluciones->getSize(); i++) {
+    int **unaMejorSol = mejoresSoluciones->get(i);
+    cout << "una nueva solucion a todos tus problemas llego:" << endl;
+    imprimirSolucion(unaMejorSol);
+    cout << endl << endl;
+  }
+  cout << "en total se han encontrado " << mejoresSoluciones->getSize()
+       << " soluciones" << endl;
 }
 
 int main() {
